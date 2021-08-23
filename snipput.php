@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Snipput
  * Plugin URI:        https://tylerkanz.com
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Posting Snippets.
  * Version:           1.0.0
  * Author:            Tyler Kanz
  * Author URI:        https://tylerkanz.com
@@ -63,6 +63,10 @@ register_deactivation_hook( __FILE__, 'deactivate_snipput' );
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-snipput.php';
+
+require plugin_dir_path( __FILE__ ) . 'includes/pages/snipputs.php';
+require plugin_dir_path( __FILE__ ) . 'includes/pages/enter-snipput.php';
+require plugin_dir_path( __FILE__ ) . 'includes/snipput-functions.php';
 
 /**
  * Begins execution of the plugin.
