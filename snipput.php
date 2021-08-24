@@ -68,6 +68,17 @@ require plugin_dir_path( __FILE__ ) . 'includes/pages/snipputs.php';
 require plugin_dir_path( __FILE__ ) . 'includes/pages/enter-snipput.php';
 require plugin_dir_path( __FILE__ ) . 'includes/snipput-functions.php';
 
+//Check for Updates
+require 'plugin-update-checker/plugin-update-checker.php';
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://github.com/tylerkanz/snipput/',
+	__FILE__,
+	'snipput'
+);
+
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('main');
+
 /**
  * Begins execution of the plugin.
  *
