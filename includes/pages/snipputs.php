@@ -5,13 +5,18 @@ function snipput_func()
 {
 global $wpdb;
 ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js" integrity="sha512-axJX7DJduStuBB8ePC8ryGzacZPr3rdLaIDZitiEgWWk2gsXxEFlm4UW0iNzj2h3wp5mOylgHAzBzM4nRSvTZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css" integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.24.1/prism.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-markup-templating.min.js" integrity="sha512-TbMpeuT8rHP3DrAX8tSkpspYIT3It0fypBn5XaSp+Hiy3n9wvPFjd3pal7YtesrphulbmxcLNB9E0sq7xDGtWg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-php.min.js" integrity="sha512-2RfDhHj8vXXJWFGaCJTSkt//hXtdb9/Sh2c68tx/Jf+0V5a7xOHY1oIlzF9KX591HX/cB+uDQMBXeYX/JKvlrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="<?php echo esc_attr(get_option('code_theme'));?>" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <div class="container">
 
     <div class="row">
-        <div class="col-md-6 p-4 mx-auto mt-4">
+        <div class="col-md-6 d-flex align-items-center p-4 mx-auto mt-4">
             <h1>Snipputs</h1>
+            <?php if (esc_attr(get_option('github_url'))) : ?>
+            <a class="h1 ml-auto" href="<?php echo esc_attr(get_option('github_url'));?>" target="_blank"><i class="fab fa-github"></i></a>
+            <?php endif; ?>
         </div>
     </div>
 
@@ -22,7 +27,7 @@ global $wpdb;
     foreach( $posts as $post ): setup_postdata($post); 
     $snipput_user = get_user_by('ID', $post->post_author);
     ?>
-        <div class="row">
+        <div class="row mb-4">
             <div class="col-6 border border-secondary rounded p-4 mx-auto">
                 <div class="row d-flex align-items-center">
                     <div class="col-auto">
@@ -43,7 +48,7 @@ global $wpdb;
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                    <pre><code class="language-<?php echo get_post_meta($post->ID, 'meta-box-dropdown', true)?>"><?php echo htmlspecialchars($post->post_content);?></code></pre>
+                    <pre class="rounded"><code class="language-<?php echo get_post_meta($post->ID, 'meta-box-dropdown', true)?>"><?php echo htmlspecialchars($post->post_content);?></code></pre>
                     </div>
                 </div>
             </div>
